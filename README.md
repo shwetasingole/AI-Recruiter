@@ -1,6 +1,6 @@
-# AIcuiter 🎤🤖
+# EchoHire	 🎤🤖
 
-**AIcuiter** is an AI-powered virtual interviewer designed to streamline and enhance the interview experience for both candidates and recruiters. It leverages voice-based communication and intelligent conversation flows to simulate real-time interviews with automated analysis and feedback.
+**EchoHire** is an AI-powered virtual interviewer designed to streamline and enhance the interview experience for both candidates and recruiters. It leverages voice-based communication and intelligent conversation flows to simulate real-time interviews with automated analysis and feedback.
 
 ## 🚀 Features
 
