@@ -84,7 +84,7 @@ export function AppSidebar() {
         <div className="px-6 py-4">
           <div className="text-center">
             <p className="text-xs text-slate-500 font-medium">
-              © 2025 YourCompany
+              © 2025 Shweta Ingole
             </p>
             <p className="text-xs text-slate-400 mt-1">All rights reserved</p>
           </div>
