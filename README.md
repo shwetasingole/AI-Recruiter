@@ -13,12 +13,13 @@
 
 ## 📦 Tech Stack
 
-- **Frontend**: React, Tailwind CSS
-- **Backend**: Node.js (if applicable), Supabase
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Authentication & Database**: Supabase
 - **Voice AI**: Vapi.ai
-- **Transcription**: Deepgram (Nova-2)
+- **Speech-to-Text**: Deepgram
 - **Text-to-Speech**: 11labs
-- **Database**: Supabase
+
 
 ## 🧑‍💻 How It Works
 
