@@ -26,7 +26,7 @@
 2. Candidate clicks the link and joins the voice-based interview.
 3. AIcuiter asks personalized questions based on the job role.
 4. Candidate responds in real-time; responses are analyzed and logged.
-5. Recruiter can review recordings and feedback post-interview.
+5. Recruiter can review feedback post-interview.
 
 
 
