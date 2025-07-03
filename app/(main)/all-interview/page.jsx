@@ -30,7 +30,7 @@ const AllInterview = () => {
     };
 
     getInterviewList();
-  }, [user]); // 👈 Runs when user gets defined
+  }, [user]); 
 
   if (!user) {
     return <p>Loading user...</p>;
