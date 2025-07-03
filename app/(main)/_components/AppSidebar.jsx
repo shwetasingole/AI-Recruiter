@@ -24,7 +24,7 @@ export function AppSidebar() {
         <div className="flex flex-col items-center gap-6 py-8 px-6">
           <div className="relative">
             <Image
-              src="/logo-new.svg"
+              src="/logo-new1.svg"
               alt="Company Logo"
               width={160}
               height={60}
@@ -44,7 +44,7 @@ export function AppSidebar() {
 
       <SidebarContent className="py-6  bg-black/80 backdrop-blur-sm">
         <SidebarGroup>
-         <SidebarMenu className="px-3 space-y-1">
+          <SidebarMenu className="px-3 space-y-1">
             {SideBarOptions.map((item, index) => (
               <SidebarMenuItem key={index}>
                 <SidebarMenuButton

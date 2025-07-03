@@ -62,7 +62,7 @@ const ScheduledInterview = () => {
                          </Button>
                          <Button
                            className="text-sm bg-blue-600 flex items-center gap-1 px-2 py-1"
-                           onClick={() => onSend(item.interview_id)}
+                          //  onClick={() => onSend(item.interview_id)}
                          >
                            <SendIcon className="w-3 h-3" />
                            Send
