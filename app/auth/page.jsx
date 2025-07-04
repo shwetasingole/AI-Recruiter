@@ -1,15 +1,17 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/services/supabaseClient";
-
 
 const Login = () => {
   const signInWithGoogle = async () => {
     // google lgojn
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo: `${process.env.NEXT_PUBLIC_HOST_URL}/dashboard`,
+      },
     });
     if (error) {
       console.log("Error", error.message);
@@ -18,12 +20,7 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div>
-        <Image
-          src="/logo-new1.svg"
-          alt="logo"
-          width={180}
-          height={100}
-        />
+        <Image src="/logo-new1.svg" alt="logo" width={180} height={100} />
       </div>
       <div className="mt-6 text-center flex flex-col items-center gap-3 rounded-2xl shadow p-5">
         <Image
