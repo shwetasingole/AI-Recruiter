@@ -4,6 +4,8 @@ import { ArrowRight, CopyIcon, PhoneCallIcon, SendIcon, Video } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/UserDetailContext";
 import { supabase } from "@/services/supabaseClient";
+import Link from "next/link";
+import { toast } from "sonner";
 // import { toast } from "sonner";
 
 const ScheduledInterview = () => {
@@ -23,7 +25,22 @@ const ScheduledInterview = () => {
   useEffect(() => {
     user && GetInterview();
   }, [user]);
+const copyLink = (interviewId) => {
+    const url = `${process.env.NEXT_PUBLIC_HOST_URL}/${interviewId}`;
+    console.log(url);
+    navigator.clipboard.writeText(url);
+    toast("Copied Link");
+  };
+  const onSend = (interviewId) => {
+    const url = `${process.env.NEXT_PUBLIC_HOST_URL}/${interviewId}`;
+    const subject = encodeURIComponent("Aicruiter Interview Link");
+    const body = encodeURIComponent("Interview Link: " + url);
 
+    window.open(
+      `https://mail.google.com/mail/?view=cm&to=shwetaingole27@gmail.com&su=${subject}&body=${body}`,
+      "_blank"
+    );
+  };
   return (
     <div className="my-7">
      <h2 className="font-bold text-2xl text-gray-300">Scheduled Interview Feedback</h2>
@@ -60,13 +77,13 @@ const ScheduledInterview = () => {
                            <CopyIcon className="w-3 h-3 " />
                            Copy Link
                          </Button>
-                         <Button
+                        {!viewDetail ?<Button
                            className="text-sm bg-blue-600 flex items-center gap-1 px-2 py-1"
                           //  onClick={() => onSend(item.interview_id)}
                          >
                            <SendIcon className="w-3 h-3" />
                            Send
-                         </Button>
+                         </Button>:<Link href={`/scheduled-interview/${item?.interview_id}/details`}><Button>View Details</Button></Link> }
                        </div>
                      </div>
                    ))}
