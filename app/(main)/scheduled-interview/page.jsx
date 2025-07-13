@@ -55,30 +55,24 @@ const copyLink = (interviewId) => {
                  <div className="mt-4 space-y-2 grid   md:grid-cols-2 lg:grid-cols-3 gap-5">
                    {interviewList.map((item, index) => (
                      <div
-                       className="p-5  bg-white/20 backdrop-blur-sm border border-white/50 rounded-md flex flex-col gap-2  shadow text-white"
+                       className="p-5  bg-white/20 backdrop-blur-sm border border-white/50 rounded-md flex flex-col gap-2  shadow text-white h-full"
                        key={index}
                      >
-                       <div className="flex justify-between items-center">
+                       <div className="flex justify-between items-center h-full">
                          <h2 className="text-xs">{item?.created_at?.split("T")[0]}</h2>
                          <PhoneCallIcon className="text-blue-500 bg-blue-100 p-1 rounded" />
                        </div>
        
-                       <h2 key={item.id} className="text-sm font-bold">
+                       <h2 key={item.id} className="text-sm font-bold h-full">
                          {item.jobTitle || "Untitled Interview"}
                        </h2>
                        <p className="text-gray-300 text-xs">
                          {item?.duration} minutes
                        </p>
-                       <div className="flex justify-between items-center gap-2 mt-1">
-                         <Button
-                           className="text-sm bg-blue-600 flex items-center gap-1 px-2 py-1"
-                           onClick={() => copyLink(item.interview_id)}
-                         >
-                           <CopyIcon className="w-3 h-3 " />
-                           Copy Link
-                         </Button>
+                       <div className="flex  gap-2 mt-1 w-full">
+                         
                         {!viewDetail ?<Button
-                           className="text-sm bg-blue-600 flex items-center gap-1 px-2 py-1"
+                           className="text-sm bg-blue-600 flex items-center gap-1 px-2 py-1 w-full"
                           //  onClick={() => onSend(item.interview_id)}
                          >
                            <SendIcon className="w-3 h-3" />
