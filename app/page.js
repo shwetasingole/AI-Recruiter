@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,9 +8,22 @@ import { Car } from "lucide-react";
 import Cards from "./_components/Cards";
 import Faqs from "./_components/Faqs";
 import Footer from "./_components/Footer";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/services/supabaseClient";
 
 export default function Home() {
   const [pixelRatio, setPixelRatio] = useState(1);
+  const router =useRouter();
+
+  const handleDashboardRedirect = async () => {
+    const { data } = await supabase.auth.getSession();
+    if (data?.session) {
+      router.push("/dashboard");
+    } else {
+      console.error("No session found.");
+      router.push("/auth");
+    }
+  };
   
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -25,11 +38,11 @@ export default function Home() {
         <div className="transform hover:scale-105 transition-transform duration-300 ease-out">
           <Image src={"/logo-home.svg"} width={150} height={100} alt="Logo" />
         </div>
-        <Link href={"/dashboard"}>
-          <Button className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/10">
+      
+          <Button  onClick={handleDashboardRedirect} className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/10">
             Dashboard
           </Button>
-        </Link>
+        
       </div>
 
       {/* Animated background section */}
