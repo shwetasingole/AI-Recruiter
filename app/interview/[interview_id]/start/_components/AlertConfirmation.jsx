@@ -14,7 +14,7 @@ import React from "react";
 const AlertConfirmation = ({children,stopInterview}) => {
   return (
     <div>
-      <AlertDialog>
+      <AlertDialog asChild> 
         <AlertDialogTrigger>{children}</AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

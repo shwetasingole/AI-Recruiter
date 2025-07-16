@@ -28,6 +28,7 @@ const CreateInterview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    
   };
 
   const onGoToNext = () => {

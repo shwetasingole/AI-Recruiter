@@ -41,7 +41,7 @@ export async function POST(req) {
 
     const parsed = JSON.parse(cleaned);
 
-    return NextResponse.json(parsed); 
+    return NextResponse.json(parsed);
   } catch (err) {
     console.error("Gemini API Error:", err);
     return NextResponse.json(

@@ -67,10 +67,10 @@ export default function Home() {
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-800 via-white/80 to-gray-800 bg-clip-text text-transparent leading-tight transition-all duration-300 ">
-             EchoHire: The Future of Interviewing, Today
+             EchoHire: The Smarter Way to Interview
             </h1>
             <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed font-light transition-colors duration-300 hover:text-gray-300">
-            Voice-powered AI interviews that deliver <br/>smarter hiring decisions — faster, fairer, and more human.
+          Voice-powered interviews made easy<br/>for mock practice, peer reviews, or real hiring decisions.
             </p>
             <div className="flex gap-4 justify-center">
               <Button className="bg-white/20 text-white hover:bg-gray-800 px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl">

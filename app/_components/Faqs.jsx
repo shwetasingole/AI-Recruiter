@@ -18,7 +18,7 @@ const Faqs = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-gray-400 text-lg font-light">
-            Everything you need to know about iEchoHire
+            Everything you need to know about EchoHire
           </p>
         </div>
 
@@ -28,10 +28,10 @@ const Faqs = () => {
             className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/5"
           >
             <AccordionTrigger className="text-white hover:text-gray-200 px-6 py-4 text-lg font-medium hover:no-underline">
-              What is iEchoHire?
+              What is EchoHire?
             </AccordionTrigger>
             <AccordionContent className="text-gray-300 px-6 pb-4 pt-2 text-base leading-relaxed">
-              iEchoHire is an AI-powered virtual interviewer that streamlines and enhances the interview process for both recruiters and candidates.
+              EchoHire is an AI-powered virtual interviewer that streamlines and enhances the interview process for both recruiters and candidates.
             </AccordionContent>
           </AccordionItem>
 
@@ -52,7 +52,7 @@ const Faqs = () => {
             className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/5"
           >
             <AccordionTrigger className="text-white hover:text-gray-200 px-6 py-4 text-lg font-medium hover:no-underline">
-              Is iEchoHire suitable for all job roles?
+              Is EchoHire suitable for all job roles?
             </AccordionTrigger>
             <AccordionContent className="text-gray-300 px-6 pb-4 pt-2 text-base leading-relaxed">
               Yes, it can generate contextual questions for a variety of job roles by understanding the candidate's profile and job description.
@@ -76,7 +76,7 @@ const Faqs = () => {
             className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/5"
           >
             <AccordionTrigger className="text-white hover:text-gray-200 px-6 py-4 text-lg font-medium hover:no-underline">
-              Is my data secure with iEchoHire?
+              Is my data secure with EchoHire?
             </AccordionTrigger>
             <AccordionContent className="text-gray-300 px-6 pb-4 pt-2 text-base leading-relaxed">
               Yes, all conversations and user data are encrypted and handled with strict confidentiality.

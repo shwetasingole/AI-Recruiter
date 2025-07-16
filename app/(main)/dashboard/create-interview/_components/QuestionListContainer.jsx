@@ -5,7 +5,7 @@ const QuestionListContainer = ({questions}) => {
   return (
     <div>
       <h2 className="font-bold mb-3">Generated Questions</h2>
-      <div className=" gap-5 flex flex-col ">
+      <div className=" gap-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {questions.map((q, index) => {
           return (
             <div

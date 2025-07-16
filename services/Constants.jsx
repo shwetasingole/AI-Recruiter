@@ -26,11 +26,11 @@ export const SideBarOptions = [
     icon: List,
     path: "/all-interview",
   },
-  {
-    name: "Billing",
-    icon: WalletCards,
-    path: "/billing",
-  },
+  // {
+  //   name: "Billing",
+  //   icon: WalletCards,
+  //   path: "/billing",
+  // },
   {
     name: "Settings",
     icon: Settings,
@@ -80,24 +80,31 @@ type:"Technical/Behavioral/Experience/Problem Solving/Leasership"
   
 🎯 The goal is to create a structured, relevant, and time-optimized interview plan for a {{jobTitle}} role.`;
 
+
 export const FEEDBACK_PROMPT = `{{conversation}}
-Depends on this Interview Conversation between assistant and user,  
-Give me feedback for user interview. Give me rating out of 10 for Technical Skills,  
-Communication, Problem Solving, Experience. Also give me summary in 3 lines  
-about the interview and one line to let me know whether the user is recommended  
-for hire or not with message. Give me response in JSON format.
+Based on this interview conversation between the assistant and the user,  
+provide structured feedback for the user. Rate the user out of 10 in the following areas:  
+- Technical Skills  
+- Communication  
+- Problem Solving  
+- Experience  
+
+Also, summarize the interview in **3 lines**, and provide **one final line** that clearly states  
+whether the user is recommended for hire, along with a short **recommendation message**.
+
+Give your response strictly in the following **JSON** format:
 
 {
-  feedback: {
-    rating: {
-      techicalSkills: 5,
-      communication: 6,
-      problemSolving: 4,
-      experince: 7
+  "feedback": {
+    "rating": {
+      "technicalSkills": 0,
+      "communication": 0,
+      "problemSolving": 0,
+      "experience": 0
     },
-    summery: "<in 3 Lines>",
-    Recommendation: "",
-    RecommendationMsg: ""
+    "summary": "<3 line summary here>",
+    "recommendation": "<yes/maybe/no>",
+    "recommendationMsg": "<1 line recommendation message>"
   }
 }
 `;

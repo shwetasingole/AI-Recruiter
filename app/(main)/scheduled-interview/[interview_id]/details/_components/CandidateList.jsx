@@ -127,7 +127,7 @@ const score = ratings ?Object.values(ratings).reduce((total,value)=> total+value
       {/* Enhanced Modal */}
       {openModal && selectedCandidate && selectedCandidate?.feedback && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-black/50 border border-slate-700 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
             <div className="border-b border-slate-700 p-6">
               <div className="flex items-center justify-between">
@@ -173,7 +173,7 @@ const score = ratings ?Object.values(ratings).reduce((total,value)=> total+value
                   Skills Assessment
                 </h3>
                 <div className="space-y-4">
-                  <div className="bg-slate-700/50 rounded-lg p-4">
+                  <div className="bg-slate-800/50 rounded-lg p-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-white font-medium">Technical Skills</span>
                       <span className="text-slate-400 text-sm">

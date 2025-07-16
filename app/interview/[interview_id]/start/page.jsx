@@ -1,6 +1,6 @@
 "use client";
 import { InterviewDataContext } from "@/context/InterviewDataContext";
-import { Mic, Phone, Timer } from "lucide-react";
+import { Mic, Phone, Timer, User } from "lucide-react";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Vapi from "@vapi-ai/web";
@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { supabase } from "@/services/supabaseClient";
 import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const StartInterview = () => {
   const { interviewInfo } = useContext(InterviewDataContext);
@@ -67,8 +68,6 @@ const StartInterview = () => {
     }
 
     const questions = questionsList.map((item) => item?.question).join(", ");
-    // const durationInMinutes = interviewInfo?.interviewDetails?.duration || 5;
-    // const maxDurationSeconds = durationInMinutes * 60;
 
     const assistantOptions = {
       name: "AI Recruiter",
@@ -95,12 +94,6 @@ const StartInterview = () => {
     };
 
     vapi.start(assistantOptions);
-
-    // // Auto-end after max duration
-    // timeoutRef.current = setTimeout(() => {
-    //   stopInterview();
-    //   toast(`⏰ Interview auto-ended after ${durationInMinutes} minutes`);
-    // }, maxDurationSeconds * 1000);
   };
 
   const stopInterview = () => {
@@ -108,7 +101,6 @@ const StartInterview = () => {
     hasEndedRef.current = true;
     vapi.stop();
     toast("Interview Ended!");
-    // clearTimeout(timeoutRef.current);
     setIsRunning(false);
     GenerateFeedback();
   };
@@ -158,7 +150,6 @@ const StartInterview = () => {
       console.log("Call has stopped");
       toast("Call has ended!");
       setIsRunning(false);
-      // clearTimeout(timeoutRef.current);
       GenerateFeedback();
     });
 
@@ -208,55 +199,107 @@ const StartInterview = () => {
   };
 
   return (
-    <div className="p-20 lg:px-48 xl:px-56">
-      <h2 className="font-bold text-xl flex justify-between">
-        AI Interview Session
-        <span className="flex gapa-2 items-center">
-          <Timer />
-          {formatTime(seconds)}
-        </span>
-      </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 place-content-center mt-7">
-        <div className="h-[400px] w-full flex flex-col gap-1 justify-center items-center bg-white/20 border border-gray-300 rounded-xl">
-          <div className="relative">
-            {!activeUser && (
-              <span className="absolute inset-0 rounded-full bg-blue-500 opacity-75 animate-ping" />
-            )}
-            <Image
-              src={"/profile.png"}
-              width={100}
-              height={100}
-              alt="ai-interviewer"
-              className="rounded-full relative z-10 w-[100px] h-[100px] object-cover"
-            />
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 flex justify-center items-center p-5">
+      <div className="container mx-auto px-6 py-8 max-w-6xl">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-white mb-2">AI Interview Session</h1>
+            <p className="text-gray-400">Interview in progress with {interviewInfo?.userName}</p>
           </div>
-          <h2 className="text-gray-300 font-medium">AI Recruiter</h2>
+          <div className="flex items-center gap-3 bg-gray-800/50 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-700">
+            <Timer className="w-5 h-5 text-blue-400" />
+            <span className="text-xl font-mono text-white">{formatTime(seconds)}</span>
+          </div>
         </div>
 
-        <div className="h-[400px] w-full flex flex-col justify-center items-center gap-2 bg-white/20  border-gray-300  rounded-xl">
-          <div className="relative">
-            {activeUser && (
-              <span className="absolute inset-0 rounded-full bg-blue-500 opacity-75 animate-ping" />
-            )}
-            <h2 className="bg-blue-900 text-white text-2xl rounded-full w-12 h-12 flex items-center justify-center">
-              {interviewInfo?.userName?.[0]}
-            </h2>
+        {/* Main Interview Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* AI Recruiter Card */}
+          <div className="bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 flex flex-col items-center justify-center h-80 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10"></div>
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="relative mb-4">
+                {!activeUser && (
+                  <>
+                    <div className="absolute inset-0 rounded-full bg-blue-500/30 animate-ping"></div>
+                    <div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping animation-delay-75"></div>
+                  </>
+                )}
+                <div className="relative">
+                  <Image
+                    src="/profile.png"
+                    width={120}
+                    height={120}
+                    alt="AI Recruiter"
+                    className="rounded-full border-4 border-gray-600 shadow-xl"
+                  />
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">AI Recruiter</h3>
+              <div className="flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full ${!activeUser ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
+                <span className="text-sm text-gray-300">
+                  {!activeUser ? 'Speaking' : 'Listening'}
+                </span>
+              </div>
+            </div>
           </div>
-          <h2>{interviewInfo?.userName}</h2>
+
+          {/* User Card */}
+          <div className="bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 flex flex-col items-center justify-center h-80 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10"></div>
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="relative mb-4">
+                {activeUser && (
+                  <>
+                    <div className="absolute inset-0 rounded-full bg-green-500/30 animate-ping"></div>
+                    <div className="absolute inset-0 rounded-full bg-green-500/20 animate-ping animation-delay-75"></div>
+                  </>
+                )}
+                <div className="relative">
+                  <div className="w-30 h-30 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center border-4 border-gray-600 shadow-xl">
+                    <span className="text-3xl font-bold text-white">
+                      {interviewInfo?.userName?.[0]?.toUpperCase() || 'U'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {interviewInfo?.userName || 'User'}
+              </h3>
+              <div className="flex items-center gap-2">
+                <div className={`w-3 h-3 rounded-full ${activeUser ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
+                <span className="text-sm text-gray-300">
+                  {activeUser ? 'Speaking' : 'Listening'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Controls */}
+        <div className="flex justify-center items-center gap-6 mb-8">
+          <div className="flex items-center gap-4 bg-gray-800/50 backdrop-blur-sm rounded-2xl px-6 py-4 border border-gray-700">
+            <div className="p-3 bg-gray-700 rounded-full">
+              <Mic className="w-6 h-6 text-gray-300" />
+            </div>
+            <AlertConfirmation stopInterview={stopInterview}>
+              <Button className="p-3 bg-red-500 hover:bg-red-600 transition-colors rounded-full group">
+                <Phone className="w-6 h-6 text-white group-hover:animate-pulse" />
+              </Button>
+            </AlertConfirmation>
+          </div>
+        </div>
+
+        {/* Status Footer */}
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 bg-gray-800/30 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-700">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-sm text-gray-300">Interview in Progress</span>
+          </div>
         </div>
       </div>
-
-      <div className="flex justify-center items-center gap-20 mt-7">
-        <Mic className="h-10 w-10 p-3 bg-gray-300 rounded-full" />
-        <AlertConfirmation stopInterview={stopInterview}>
-          <Phone className="h-10 w-10 p-3 bg-red-500 text-white rounded-full" />
-        </AlertConfirmation>
-      </div>
-
-      <h2 className="text-sm text-gray-400 text-center mt-5">
-        Interview In Progress
-      </h2>
     </div>
   );
 };

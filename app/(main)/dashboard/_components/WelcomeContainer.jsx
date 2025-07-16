@@ -38,7 +38,7 @@ export default function WelcomeContainer() {
             Welcome Back, {user.name}
           </h1>
           <h2 className="text-sm sm:text-base text-gray-300/90 mt-1 drop-shadow-sm leading-relaxed">
-            AI-Driven Interviews, Hassle-Free Hiring
+            Your Smart Interview Companion — Practice or Hire
           </h2>
         </div>
         

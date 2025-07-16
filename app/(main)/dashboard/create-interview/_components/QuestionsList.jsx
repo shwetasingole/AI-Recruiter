@@ -43,7 +43,15 @@ const QuestionsList = ({ formData , onCreateLink }) => {
       ])
       .select();
     setSaveLoading(false);
-
+    console.log("Interview Created: ", data, error);
+if (error) {
+      console.error("Error creating interview:", error);
+      return;
+    }
+    if (data.length === 0) {
+      console.error("No data returned from the insert operation.");
+      return;
+    }
     onCreateLink( interview_id );
   };
   return (
