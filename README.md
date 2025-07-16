@@ -9,14 +9,13 @@
 - 📊 Candidate response analysis
 - 📅 Interview scheduling & tracking
 - 🔗 Shareable interview links
-- 📥 Easy integration with recruitment platforms
+
 
 ## 📦 Tech Stack
 
 - **Framework**: Next.js
 - **Styling**: Tailwind CSS, shadcn/ui
 - **Authentication & Database**: Supabase
-- **Voice AI**: Vapi.ai
 - **Speech-to-Text**: Deepgram
 - **Text-to-Speech**: 11labs
 
