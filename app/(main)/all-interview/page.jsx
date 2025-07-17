@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/UserDetailContext";
 import { supabase } from "@/services/supabaseClient";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const AllInterview = () => {
   const [interviewList, setInterviewList] = useState([]);
@@ -60,7 +61,7 @@ const AllInterview = () => {
            <div className="p-5 flex flex-col gap-3 items-center justify-center  mt-4 rounded ">
              <Video className="h-12 w-12 text-blue-600 bg-blue-100 p-3 rounded-lg" />
              <h2 className="font-bold text-lg text-gray-300">You don't have any interview created!</h2>
-             <Button className="bg-blue-600">Create New Interview</Button>
+           <Link href={"/dashboard/create-interview"}> <Button className="bg-blue-600" >Create New Interview</Button></Link> 
            </div>
          ) : (
            <div className="">
