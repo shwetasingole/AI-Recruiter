@@ -23,9 +23,9 @@ const AllInterview = () => {
        
 
       if (error) {
-        console.error("❌ Supabase error:", error.message);
+        console.error("Supabase error:", error.message);
       } else {
-        console.log("✅ Fetched Interviews:", Interviews);
+        console.log("Fetched Interviews:", Interviews);
         setInterviewList(Interviews);
       }
     };
