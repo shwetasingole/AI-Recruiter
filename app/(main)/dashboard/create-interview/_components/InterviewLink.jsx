@@ -49,10 +49,7 @@ const InterviewLink = ({ interviewId, formData }) => {
           </Button>
         </div>
         <hr className="my-7" />
-        <div className="flex justify-start gap-10 items-center w-full">
-          <h2 className="text-xs text-gray-300 flex gap-1 items-center">
-            <Clock className="h-4 w-4" /> {formData?.duration} minutes
-          </h2>
+        
           {/* <h2 className="text-xs text-gray-300 flex gap-1 items-center">
             <List className="h-4 w-4" /> 
           </h2>
@@ -62,21 +59,8 @@ const InterviewLink = ({ interviewId, formData }) => {
           {/* <h2 className="text-xs text-gray-500">
                 < className="h-4 w-4"/> {formData?.duration} durr
             </h2> */}
-        </div>
-        <div className="mt-7  p-5 rounded-lg w-full bg-white/20 backdrop-blur-sm border border-white/50">
-          <h2 className="font-bold text-black">Share Via</h2>
-          <div className="flex gap-7 justify-between mt-2">
-            <Button variant={"outline"} className="text-black ">
-              <Mail /> Email
-            </Button>
-            <Button variant={"outline"} className="text-black  ">
-              <Mail /> Slack
-            </Button>
-            <Button variant={"outline"} className="text-black ">
-              <Mail /> Whatsapp
-            </Button>
-          </div>
-        </div>
+        
+        
         {/* buttons */}
         <div className="flex justify-between items-center gap-5  mt-7">
           <Link href={"/dashboard"}>
